@@ -11,6 +11,7 @@ const Movie = require('./models/Movie.model');
 
 
 
+
 mongoose
   .connect("mongodb://127.0.0.1:27017/imdb")
   .then(res => console.log(`Connected to Mongo! Database name: "${res.connections[0].name}"`))
@@ -38,6 +39,16 @@ app.get('/movies',(req,res)=>{
         console.log(err)
     })
 })
+
+
+app.get('/movies/:id',(req,res)=>{
+
+    console.log(req.params)
+
+    res.json("one movier route")
+})
+
+
 
 
 
