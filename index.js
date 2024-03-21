@@ -9,7 +9,7 @@ const mongoose = require('mongoose')
 
 const Movie = require('./models/Movie.model');
 
-
+app.use(express.json())
 
 
 mongoose
@@ -56,12 +56,26 @@ app.get('/movies/:id',(req,res)=>{
     })
     .catch(err=>{
         console.log(err)
+        res.json(err)
     })
 
 
 })
 
 
+app.post('/movies',(req,res)=>{
+    console.log(req.body)
+
+    Movie.create(req.body)
+    .then((createdMovie)=>{
+        res.json(createdMovie)
+    })
+    .catch(err=>{
+        console.log(err)
+        res.json(err)
+    })
+
+})
 
 
 
