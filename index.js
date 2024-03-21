@@ -78,6 +78,17 @@ app.post('/movies',(req,res)=>{
 })
 
 
+app.put('/movies/:id',(req,res)=>{
+
+    console.log(req.params)
+    console.log(req.body)
+    
+    Movie.findByIdAndUpdate(req.params.id,req.body)
+    .then((updatedMovie)=>{
+        res.json(updatedMovie)
+    })
+})
+
 
 
 
