@@ -4,7 +4,11 @@ const express = require('express')
 
 const app = express()
 
+
 const mongoose = require('mongoose')
+
+const Movie = require('./models/Movie.model');
+
 
 
 mongoose
@@ -14,6 +18,26 @@ mongoose
 
 
 
+
+
+// CRUD
+
+
+
+// READ:
+
+// READ: getting all movies
+
+app.get('/movies',(req,res)=>{
+
+    Movie.find()
+    .then((allMovies)=>{
+        res.json(allMovies)
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+})
 
 
 
