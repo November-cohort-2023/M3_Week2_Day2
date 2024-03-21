@@ -43,10 +43,25 @@ app.get('/movies',(req,res)=>{
 
 app.get('/movies/:id',(req,res)=>{
 
-    console.log(req.params)
+    Movie.findById(req.params.id)
+    .then((oneMovie)=>{
 
-    res.json("one movier route")
+        if(oneMovie === null){
+            res.json({errorMessage:"No movie with this ID"})
+            return
+        }
+
+        res.json(oneMovie)
+
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+
+
 })
+
+
 
 
 
