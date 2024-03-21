@@ -83,15 +83,31 @@ app.put('/movies/:id',(req,res)=>{
     console.log(req.params)
     console.log(req.body)
     
-    Movie.findByIdAndUpdate(req.params.id,req.body)
+    Movie.findByIdAndUpdate(req.params.id,req.body,{new:true})
     .then((updatedMovie)=>{
         res.json(updatedMovie)
+    })
+    .catch(err=>{
+        console.log(err)
+        res.json(err)
     })
 })
 
 
 
 
+app.delete('/movies/:id',(req,res)=>{
+
+    Movie.findByIdAndDelete(req.params.id)
+    .then((deletedMovie)=>{
+        
+        res.json(deletedMovie)
+    })
+    .catch(err=>{
+        console.log(err)
+        res.json(err)
+    })
+})
 
 
 
